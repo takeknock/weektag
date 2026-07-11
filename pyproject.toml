@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "weektag"
+version = "0.0.1"
+description = "Tag-based CLI time tracker with agent-readable weekly JSONL storage"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+authors = [{ name = "takeknock" }]
+keywords = ["time-tracking", "cli", "jsonl", "tags"]
+classifiers = [
+    "Environment :: Console",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = ["typer>=0.12"]
+
+[project.urls]
+Repository = "https://github.com/takeknock/weektag"
+
+[project.scripts]
+tt = "weektag.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "freezegun>=1.5",
+    "ruff>=0.6",
+]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
